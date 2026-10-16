@@ -31,7 +31,7 @@ jobs:
           git config --global user.name "gh-actions"
           git config --global user.email "gh-actions@github.com"
 
-      - name: Initialize TWRP minimal manifest
+      - name: Initialize TWRP manifest
         run: |
           mkdir -p ~/twrp
           cd ~/twrp
@@ -53,7 +53,7 @@ jobs:
           cd ~/twrp
           source build/envsetup.sh
           export ALLOW_MISSING_DEPENDENCIES=true
-          lunch twrp_a03s-ab2a-eng
+          lunch twrp_a03s-ap2a-eng
           mka recoveryimage -j8
 
       - name: Upload recovery image
