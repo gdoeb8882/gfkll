@@ -53,7 +53,7 @@ jobs:
           cd ~/twrp
           source build/envsetup.sh
           export ALLOW_MISSING_DEPENDENCIES=true
-          lunch twrp_a03s-eng
+          lunch twrp_a03s-ab2a-eng
           mka recoveryimage -j8
 
       - name: Upload recovery image
