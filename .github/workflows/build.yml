@@ -14,6 +14,15 @@ jobs:
         with:
           path: device/samsung/a03s
 
+      - name: Create Swap Space
+        run: |
+          sudo swapoff -a
+          sudo fallocate -l 10G /swapfile
+          sudo chmod 600 /swapfile
+          sudo mkswap /swapfile
+          sudo swapon /swapfile
+          free -h
+
       - name: Install dependencies
         run: |
           sudo apt-get update
@@ -54,7 +63,7 @@ jobs:
           source build/envsetup.sh
           export ALLOW_MISSING_DEPENDENCIES=true
           lunch twrp_a03s-ap2a-eng
-          mka recoveryimage -j4
+          mka recoveryimage -j2
 
       - name: Upload recovery image
         uses: actions/upload-artifact@v4
