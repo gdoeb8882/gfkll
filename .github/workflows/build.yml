@@ -14,14 +14,14 @@ jobs:
         with:
           path: device/samsung/a03s
 
-      - name: Create 6GB Swap Space
+      - name: Free Disk Space (Crucial Step)
         run: |
-          sudo swapoff -a
-          sudo fallocate -l 6G /swapfile
-          sudo chmod 600 /swapfile
-          sudo mkswap /swapfile
-          sudo swapon /swapfile
-          free -h
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf "/usr/local/share/boost"
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          sudo apt-get clean
+          df -h
 
       - name: Install dependencies
         run: |
@@ -63,7 +63,7 @@ jobs:
           source build/envsetup.sh
           export ALLOW_MISSING_DEPENDENCIES=true
           lunch twrp_a03s-ap2a-eng
-          mka recoveryimage -j2
+          mka recoveryimage -j1
 
       - name: Upload recovery image
         uses: actions/upload-artifact@v4
