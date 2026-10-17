@@ -54,7 +54,7 @@ jobs:
           source build/envsetup.sh
           export ALLOW_MISSING_DEPENDENCIES=true
           lunch twrp_a03s-ap2a-eng
-          mka recoveryimage -j8
+          mka recoveryimage -j4
 
       - name: Upload recovery image
         uses: actions/upload-artifact@v4
