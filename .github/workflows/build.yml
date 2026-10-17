@@ -14,10 +14,10 @@ jobs:
         with:
           path: device/samsung/a03s
 
-      - name: Create Swap Space
+      - name: Create 6GB Swap Space
         run: |
           sudo swapoff -a
-          sudo fallocate -l 10G /swapfile
+          sudo fallocate -l 6G /swapfile
           sudo chmod 600 /swapfile
           sudo mkswap /swapfile
           sudo swapon /swapfile
